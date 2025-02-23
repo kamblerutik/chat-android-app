@@ -1,0 +1,1 @@
+export const baseUrl = "https://chat-app-backend-asva.onrender.com/api"
