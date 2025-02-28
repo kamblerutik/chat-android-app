@@ -1,3 +1,4 @@
+import { baseUrl } from "@/contants/urls";
 import { FontAwesome6, Ionicons } from "@expo/vector-icons";
 import axios, { isAxiosError } from "axios";
 import { Link, useRouter } from "expo-router";
@@ -30,14 +31,11 @@ const Register = () => {
   const handleRegister = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        `https://chat-app-backend-asva.onrender.com/api/auth/register`,
-        {
-          username,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post(`${baseUrl}/api/auth/register`, {
+        username,
+        email,
+        password,
+      });
 
       if (response.data.status) {
         Alert.alert(response.data.message);

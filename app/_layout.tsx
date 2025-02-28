@@ -1,11 +1,25 @@
-import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { UserProvider } from "@/contexts/userContext";
 import { Stack } from "expo-router";
-import { ToastProvider } from "react-native-toast-notifications";
 
 export default function RootLayout() {
   return (
-    <ToastProvider>
-      <Stack screenOptions={{ headerShown: false }} />
-    </ToastProvider>
+    <UserProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        {/* These screens don't have a bottom tab */}
+        <Stack.Screen name="index" />
+        <Stack.Screen name="login/index" />
+        <Stack.Screen name="register/index" />
+        <Stack.Screen
+          options={{
+            headerShown: true,
+            title: "Chat",
+          }}
+          name="chat/index"
+        />
+
+        {/* The (app) group has its own layout with tabs */}
+        <Stack.Screen name="(app)" />
+      </Stack>
+    </UserProvider>
   );
 }

@@ -16,6 +16,7 @@ import {
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import axios, { isAxiosError } from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { baseUrl } from "@/contants/urls";
 
 const { width } = Dimensions.get("window");
 
@@ -30,13 +31,10 @@ const Login = () => {
   const handleLogin = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        `https://chat-app-backend-asva.onrender.com/api/auth/login`,
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post(`${baseUrl}/api/auth/login`, {
+        username,
+        password,
+      });
 
       if (response.data.status) {
         Alert.alert(response.data.message);

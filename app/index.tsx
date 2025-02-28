@@ -31,7 +31,7 @@ export default function AuthCheck() {
         router.replace("/login");
       }
     }
-  }, [token, loading]); // Ensure navigation happens only when loading is false
+  }, [token, loading]);
 
   if (loading) {
     return (
